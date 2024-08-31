@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pleyer : MonoBehaviour
+public class Player : Character
 {
     public float _JanpSpeed = 0.5f;
     public float _MoveSpeed = 1f;
     public float _time = 0;
     [SerializeField] GameObject _gameObject;
-    [SerializeField] GameObject _gameObject2;
     public float _gravity = 1f;
     private float _ySpeed = 0;
     private float _Ground = 0;
@@ -27,7 +26,7 @@ public class Pleyer : MonoBehaviour
         transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * _MoveSpeed, 0, 0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(_gameObject, _gameObject2.transform.position, Quaternion.identity);
+            Instantiate(_gameObject, this.transform.position + new Vector3(0.5f, 0, 0), this.transform.rotation);
         }
 
 
