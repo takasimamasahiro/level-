@@ -34,7 +34,9 @@ public class firing : Character
         }
         if (_hp <= 0)
         {
+            GameManager.Instance.Remove(this);
             Destroy(gameObject);
+            return;
         }
     }
 }

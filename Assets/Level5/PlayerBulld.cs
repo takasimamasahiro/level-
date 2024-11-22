@@ -11,21 +11,24 @@ public class PlayerBulld : Character
     private void Start()
     {
         _player = GameObject.FindObjectOfType<Player>();
-        _Enemy = GameObject.FindObjectOfType<firing>();
+        
     }
 
     void Update()
     {
+        
         this.transform.position += _power * 5 * Time.deltaTime;
-        if (_hp <= 0) 
+        var enList = GameObject.FindObjectsOfType<firing>();
+        foreach (var enemy in enList)
         {
-            if (Mathf.Abs(this.transform.position.x - _Enemy.transform.transform.position.x) < (_Enemy.transform.localScale.x + this.transform.localScale.x) / 2 &&
-                Mathf.Abs(this.transform.position.y - _Enemy.transform.transform.position.y) < (_Enemy.transform.localScale.y + this.transform.localScale.y) / 2)
+            if (Mathf.Abs(this.transform.position.x - enemy.transform.transform.position.x) < (enemy.transform.localScale.x + this.transform.localScale.x) / 2 &&
+                Mathf.Abs(this.transform.position.y - enemy.transform.transform.position.y) < (enemy.transform.localScale.y + this.transform.localScale.y) / 2)
             {
-                _Enemy.Damage();
+                enemy.Damage();
                 Destroy(gameObject);
             }
         }
+        
         
 
     }

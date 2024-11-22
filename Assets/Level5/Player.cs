@@ -13,6 +13,7 @@ public class Player : Character
     private float _Ground = 0;
     public int _JanpCount = 0;
     public int _MaxJanpCount = 2;
+    float _radian = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -64,5 +65,11 @@ public class Player : Character
     void Jump()
     {
         _ySpeed = _JanpSpeed;
+    }
+    public void SetTargetRadian(float rad)
+    {
+        _radian = rad;
+
+        this.transform.rotation = Quaternion.AngleAxis(_radian * 180 / Mathf.PI, new Vector3(0, 0, 1));
     }
 }
